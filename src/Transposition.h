@@ -8,7 +8,7 @@ enum {
     entryExact, entryAlpha, entryBeta
 };
 
-constexpr int ttSizeMB = 64;
+constexpr int ttSizeMB = 128;
 
 class TTEntry{
     public:

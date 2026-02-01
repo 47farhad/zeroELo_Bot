@@ -13,7 +13,7 @@ private:
     
     // Time allocation constants
     static constexpr double MOVE_HORIZON = 1.0;  // Plan for this many moves ahead
-    static constexpr double TIME_SAFETY_MARGIN = 1.0;  // Use 90% of available time at most
+    static constexpr double TIME_SAFETY_MARGIN = 1.0;  // Use x% of available time at most
 
 public:
     TimeManager();

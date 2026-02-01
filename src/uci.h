@@ -30,6 +30,7 @@ private:
 public:
     UCIProtocol();  // Changed constructor name
     void loop();
+    void processCommand(const std::string& line);
     void position(const std::string& command);
     void go(const std::string& command);
     void stop();

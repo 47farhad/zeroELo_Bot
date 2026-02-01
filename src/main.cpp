@@ -1,15 +1,17 @@
 #include <iostream>
 #include <cstdint>
 #include "uci.h"
-#include "board.h"
-#include "SearchUtil.h"
 using namespace std;
 
-UCIProtocol uci;
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
-int main(){
+UCIProtocol* uciPtr = nullptr;
 
-    uci.loop();
+int main() {
+    uciPtr = new UCIProtocol(); 
+    uciPtr->loop();
     
     return 0;
 }

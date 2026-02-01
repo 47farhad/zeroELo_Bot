@@ -71,8 +71,6 @@ void perft(Board *board, int depth){
     int countp = 0;
     Board copy;
 
-    cout << "Starting Perft" << endl << endl;
-
     auto start = chrono::high_resolution_clock::now();
 
 
@@ -437,7 +435,6 @@ int quiescenseSearch(Board board, int alpha, int beta, int ply, int *nodes){
 std::pair<int, int> findBestMove(Board board, int depth) {
     resetSearch();
     timeManager.start();
-
     
     int nodes = 0;
     int move = 0;
