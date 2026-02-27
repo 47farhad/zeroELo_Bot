@@ -1,0 +1,38 @@
+name: Build and Deploy ZeroElo to Vercel Blob
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build with Emscripten
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/src emscripten/emsdk:latest \
+          bash -c "
+            cd /src && \
+            mkdir -p build && \
+            cd build && \
+            emcmake cmake .. && \
+            emmake make
+          "
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Upload to Vercel Blob
+        run: |
+          vercel blob put ./build/ZeroEloWasm.js \
+            --pathname ZeroEloWasm.js \
+            --token ${{ secrets.BLOB_READ_WRITE_TOKEN }} \
+            --access public \
+            --add-random-suffix false \
+            --allow-overwrite \
+            --cache-control-max-age 60

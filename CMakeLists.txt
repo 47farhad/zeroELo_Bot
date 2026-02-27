@@ -23,7 +23,7 @@ if(EMSCRIPTEN)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/binWasm)
     
     add_executable(ZeroElo_Bot ${SOURCES})
-    set_target_properties(ZeroElo_Bot PROPERTIES OUTPUT_NAME "ZeroEloWasm" SUFFIX ".js" LINK_FLAGS "-fexceptions -frtti --no-entry -s MODULARIZE=1 -s EXPORT_ES6=1 -s ENVIRONMENT=web,worker -s EXPORTED_FUNCTIONS=['_main','_send_uci_command'] -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap','FS'] -s ALLOW_MEMORY_GROWTH=1 -s STACK_SIZE=16777216 -s INITIAL_MEMORY=134217728 -O3 -flto")
+    set_target_properties(ZeroElo_Bot PROPERTIES OUTPUT_NAME "ZeroEloWasm" SUFFIX ".js" LINK_FLAGS "-fexceptions -frtti --no-entry -s MODULARIZE=1 -s EXPORT_ES6=1 -s ENVIRONMENT=web,worker -s EXPORTED_FUNCTIONS=['_main','_send_uci_command'] -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap','FS'] -s ALLOW_MEMORY_GROWTH=1 -s STACK_SIZE=16777216 -s INITIAL_MEMORY=134217728 -O3 -flto -s SINGLE_FILE=1")
    
 else()
     # Native (Desktop) Specific Flags
