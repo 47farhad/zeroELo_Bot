@@ -38,5 +38,5 @@ jobs:
             --access public \
             --add-random-suffix false \
             --allow-overwrite \
-            --cache-control-max-age 60 \
+            --cache-control-max-age 0 \
             --token ${{ secrets.VERCEL_TOKEN }}
