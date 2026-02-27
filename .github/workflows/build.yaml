@@ -28,10 +28,11 @@ jobs:
         run: npm install -g vercel
 
       - name: Upload to Vercel Blob
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
         run: |
           vercel blob put ./build/ZeroEloWasm.js \
             --pathname ZeroEloWasm.js \
-            --token ${{ secrets.BLOB_READ_WRITE_TOKEN }} \
             --access public \
             --add-random-suffix false \
             --allow-overwrite \
