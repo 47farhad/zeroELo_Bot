@@ -23,6 +23,8 @@ jobs:
             emcmake cmake .. && \
             emmake make
           "
+      - name: List Files (Debug)
+        run: ls -R ${{ github.workspace }}
 
       - name: Install Vercel CLI
         run: npm install -g vercel
