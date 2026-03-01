@@ -23,20 +23,14 @@ jobs:
             emcmake cmake .. && \
             emmake make
           "
-      - name: List Files (Debug)
-        run: ls -R ${{ github.workspace }}
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Upload to Vercel Blob
-        env:
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
-        run: |
-          vercel blob put ./binWasm/ZeroEloWasm.js \
-            --pathname ZeroEloWasm.js \
-            --access public \
-            --add-random-suffix false \
-            --allow-overwrite \
-            --cache-control-max-age 0 \
-            --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Upload to Cloudflare R2
+        uses: ryand56/r2-upload-action@v0.1.6
+        with:
+          r2-account-id: ${{ secrets.R2_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.R2_BUCKET }}
+          source-dir: ./binWasm
+          destination-dir: ./
+          keep-file-fresh: true
