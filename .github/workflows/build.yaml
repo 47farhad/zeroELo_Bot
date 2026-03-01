@@ -1,4 +1,4 @@
-name: Build and Deploy ZeroElo to Vercel Blob
+name: Build and Deploy ZeroElo to Cloudflare R2
 
 on:
   push:
