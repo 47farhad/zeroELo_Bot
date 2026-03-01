@@ -14,7 +14,7 @@
 constexpr int pieceValues[] = {
     100, // pawn
     300, // knight
-    330, // bishop
+    320, // bishop
     500, // rook
     1000, // queen
     100000 // king
